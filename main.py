@@ -24,4 +24,15 @@ class LogisticPINN(nn.Module):
         
         return self.layer_out(out_0)
 
-        
+def f(nn: LogisticPINN, tf: torch.Tensor) -> torch.Tensor:
+    return nn(tf)
+
+def df(nn: LogisticPINN, tf: torch.Tensor, order: int = 1) -> torch.Tensor:
+    d_nn_eval = nn(tf)
+    for d in range(order):
+        d_nn_eval = torch.autograd.grad(
+            d_nn_eval, tf, grad_outputs=torch.ones_like(tf), create_graph=True, retain_graph=True
+        )[0]
+    return d_nn_eval
+
+
