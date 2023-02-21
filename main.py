@@ -2,7 +2,7 @@ import torch
 from torch import nn 
 
 import matplotlib.pyplot as plt
-plt.rcParams["text.usetex"] = True
+#plt.rcParams["text.usetex"] = True
 
 def set_seed(seed=42):
     torch.manual_seed(seed)
@@ -78,8 +78,8 @@ if __name__ == "__main__":
 
     ax.scatter(tf.detach().numpy(), f_final_training.detach().numpy(), label="Training Points", color="red")
     ax.plot(t_u.detach().numpy(), f_final.detach().numpy(), label="NN Final Solution")
-    plt.xlabel(r't')
-    plt.ylabel(r'$f(x)$')
+    plt.xlabel('t')
+    plt.ylabel('f(x)')
     plt.title("Logistic Equation")
     plt.savefig("logistic_pinn.png")
     plt.show()
