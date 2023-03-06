@@ -18,7 +18,7 @@ class LogisticPINN(nn.Module):
         )
 
     def forward(self, t):
-        out_0 = self.layer_in(t)
+        out_0 = self.act(self.layer_in(t))
         for hidden_layer in self.hidden_layers:
             out_0 = self.act(hidden_layer(out_0))
         
